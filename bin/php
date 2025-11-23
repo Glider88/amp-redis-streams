@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+args="$@"
+docker compose exec --user docker php sh -c "php $args"

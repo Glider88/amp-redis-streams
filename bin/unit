@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+args="$@"
+if [ -z "$args" ]; then
+    docker compose exec --user docker php sh -c "vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --process-isolation"
+else
+    docker compose exec --user docker php sh -c "vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --filter $args"
+fi

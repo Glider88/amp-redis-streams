@@ -1,0 +1,39 @@
+services:
+  php:
+    container_name: amp-redis-streams-php
+    build: .docker/php
+    image: amp-redis-streams/php
+    user: docker
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - .docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - .docker/php/custom-php.ini:/usr/local/etc/php/conf.d/custom-php.ini
+      - .:/usr/src/app
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker-amp-redis-streams-php"
+#    ports:
+#      - "9501:9501"
+    networks: [ app ]
+  composer:
+    container_name: amp-redis-streams-composer
+    image: composer
+    user: 1000:1000
+    volumes:
+      - .:/app
+    command: [ 'install', '--ignore-platform-reqs' ]
+  valkey:
+    container_name: amp-redis-streams-valkey
+    image: valkey/valkey:9.0.0-alpine
+    #    volumes:
+    #      - ./conf/valkey.conf:/etc/valkey/valkey.conf
+    #       /etc/valkey/valkey.conf- valkey-data:/data
+    #    command: valkey-server /etc/valkey/valkey.conf
+    command: valkey-server
+    hostname: redis
+    networks: [ app ]
+    ports:
+      - "6379:6379"
+networks:
+  app:
+    driver: bridge

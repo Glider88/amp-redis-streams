@@ -1,0 +1,35 @@
+{
+  "name": "glider88/amp-redis-streams",
+  "version": "0.0.1",
+  "description": "Redis Streams with Amphp",
+  "keywords": ["redis", "amphp", "stream"],
+  "type": "library",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sakharov Pavel",
+      "email": "s.p.alekseevich@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "revolt/event-loop": "^1.0@dev",
+    "amphp/amp": "3.x-dev",
+    "amphp/redis": "2.x-dev"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Glider88\\AmpRedisStreams\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Glider88\\AmpRedisStreams\\": "tests/"
+    }
+  }
+}
