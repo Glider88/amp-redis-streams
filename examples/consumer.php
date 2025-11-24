@@ -3,16 +3,13 @@
 namespace Glider88\AmpRedisStreams;
 
 use Closure;
+use Glider88\AmpRedisStreams\Helpers\Php;
+use Glider88\AmpRedisStreams\Helpers\Str;
 use Glider88\AmpRedisStreams\Helpers\Time;
 use Glider88\AmpRedisStreams\Job\MessageHandlerInterface;
 
 require  __DIR__ . '/bootstrap.php';
 require  __DIR__ . '/../vendor/autoload.php';
-
-// ToDo: test performance
-// ToDo: test memory leaks
-// ToDo: test backpressure
-
 
 $stream = mkStream();
 
@@ -22,7 +19,7 @@ $f = static function () use (&$i, &$startMs) {
     $nowMs = Time::nowMs();
     if (($nowMs - $startMs) >= 1000) {
 //        Php::mem(__LINE__);
-        echo 'rpc: ' . $i . PHP_EOL;
+        Str::println("rpc: $i");
         $i = 1;
         $startMs = $nowMs;
     }
