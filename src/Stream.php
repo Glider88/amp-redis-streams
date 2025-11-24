@@ -59,7 +59,6 @@ readonly class Stream
             });
         }
 
-//        $sem = new \Amp\Sync\LocalSemaphore(16);   //  > 2x faster, but no scaling and timeouts
         while (true) {
             $this->logger->debug('new loop tick');
             if ($isStop) {
@@ -88,7 +87,6 @@ readonly class Stream
                     continue;
                 }
 
-//                $lock = $sem->acquire();
                 $futures[$id] = async(function () use ($handler, $id, $fields) {
                     try {
                         unset($fields['_service_data_message_retries'], $fields['_service_data_message_id']);
@@ -100,9 +98,6 @@ readonly class Stream
                         $this->logger->error("FAILED handle message: " . $e->getMessage());
                         // not ack -> left in PEL
                     }
-//                    finally {
-//                        $lock->release();
-//                    }
                 });
 
                 if (! is_null($times)) {
