@@ -1,39 +1,33 @@
 # AMPHP redis streams realization
 
-## Installation:
+### Installation:
 ```shell
 composer require glider88/amp-redis-streams
 ```
-
-## Start docker:
-
-### First time:
+Start docker:
 ```shell
-bin/reup
+bin/reup # First time
 ```
-
-### Next times:
 ```shell
-bin/up
+bin/up # Next times
 ```
-
-## Tests:
+Tests:
 ```shell
 bin/unit
 ```
-## Run example:
 
-### Producer:
+### Run example:
+
+Producer:
 ```shell
 bin/php examples/producer.php
 ```
-
-### Consumer:
+Consumer:
 ```shell
 bin/php examples/consumer.php
 ```
 
-## Settings:
+### Settings:
 ```php
     // create amphp redis
     $ampRedis = createRedisClient('redis://redis:6379');
