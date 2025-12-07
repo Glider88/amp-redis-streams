@@ -1,6 +1,5 @@
 {
   "name": "glider88/amp-redis-streams",
-  "version": "0.0.1",
   "description": "Redis Streams with Amphp",
   "keywords": ["redis", "amphp", "stream"],
   "type": "library",
