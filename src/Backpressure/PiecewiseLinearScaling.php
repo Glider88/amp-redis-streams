@@ -68,7 +68,7 @@ readonly class PiecewiseLinearScaling implements ScalingInterface
         $this->extendedPoints = $rounded;
     }
 
-    function numberOfWorkers(int $lag): int
+    public function numberOfWorkers(int $lag): int
     {
         $result = array_key_first($this->extendedPoints);
         foreach ($this->extendedPoints as $y => $x) {

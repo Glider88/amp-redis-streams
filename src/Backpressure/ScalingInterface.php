@@ -4,5 +4,5 @@ namespace Glider88\AmpRedisStreams\Backpressure;
 
 interface ScalingInterface
 {
-    function numberOfWorkers(int $lag): int;
+    public function numberOfWorkers(int $lag): int;
 }
