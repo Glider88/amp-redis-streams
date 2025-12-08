@@ -6,10 +6,10 @@ composer require glider88/amp-redis-streams
 ```
 Start docker:
 ```shell
-bin/reup # First time
+bin/re # first time
 ```
 ```shell
-bin/up # Next times
+bin/up # next times
 ```
 Tests:
 ```shell
